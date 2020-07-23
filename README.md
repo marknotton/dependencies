@@ -14,7 +14,7 @@ npm i @marknotton/dependencies --save-dev
 ```
 
 ```js
-const dependencies =  require('@marknotton/dependencies');
+const dependencies =  require('@marknotton/dependencies')();
 ```
 
 ## But why?
@@ -44,26 +44,26 @@ Reserved Javascript names will not be sanitised.
 
 ```js
 const dotenv = require("dotenv"),
-	@doggistyle = require("@doggistyle/library"),
-	lumberjack = require("@marknotton/lumberjack"),
-	notifier = require("@marknotton/notifier"),
-	svgToSymbols = require("@marknotton/svg-to-symbols"),
-	autoprefixer = require("autoprefixer"),
-	browserSync = require("browser-sync"),
-	gulp = require("gulp"),
-	concat = require("gulp-concat"),
-	gulpif = require("gulp-if"),
-	plumber = require("gulp-plumber"),
-	postcss = require("gulp-postcss"),
-	rename = require("gulp-rename"),
-	terser = require("gulp-terser"),
-	postcssCustomProperties = require("postcss-custom-properties"),
-	rollup = require("rollup"),
-	rollupPluginCommonjs = require("@rollup/plugin-commonjs"),
-	rollupPluginMultiEntry = require("@rollup/plugin-multi-entry"),
-	rollupPluginNodeResolve = require("@rollup/plugin-node-resolve"),
-	postcssAssets = require("postcss-assets"),
-	snowpack = require("snowpack")
+      @doggistyle = require("@doggistyle/library"),
+      lumberjack = require("@marknotton/lumberjack"),
+      notifier = require("@marknotton/notifier"),
+      svgToSymbols = require("@marknotton/svg-to-symbols"),
+      autoprefixer = require("autoprefixer"),
+      browserSync = require("browser-sync"),
+      gulp = require("gulp"),
+      concat = require("gulp-concat"),
+      gulpif = require("gulp-if"),
+      plumber = require("gulp-plumber"),
+      postcss = require("gulp-postcss"),
+      rename = require("gulp-rename"),
+      terser = require("gulp-terser"),
+      postcssCustomProperties = require("postcss-custom-properties"),
+      rollup = require("rollup"),
+      rollupPluginCommonjs = require("@rollup/plugin-commonjs"),
+      rollupPluginMultiEntry = require("@rollup/plugin-multi-entry"),
+      rollupPluginNodeResolve = require("@rollup/plugin-node-resolve"),
+      postcssAssets = require("postcss-assets"),
+      snowpack = require("snowpack")
 ```
 
 
@@ -73,11 +73,11 @@ const dotenv = require("dotenv"),
 const dependencies = require('./gulp/dependencies')
   
 const {
-	doggistyle : { core, library },
-	marknotton : { log, notifier, svgToSymbols },
-	postcss : { customProperties, assets },
-	rollup : { rollup, commonjs, multiEntry, nodeResolve },
-	dotenv, browserSync, gulp, concat, if, plumber, rename, terser, snowpack
+  doggistyle : { core, library },
+  marknotton : { log, notifier, svgToSymbols },
+  postcss : { customProperties, assets },
+  rollup : { rollup, commonjs, multiEntry, nodeResolve },
+  dotenv, browserSync, gulp, concat, if, plumber, rename, terser, snowpack
 } = dependencies
 ```
 
@@ -118,14 +118,14 @@ It's possible to break the scoped vendor nesting by setting aliases if necessary
 
 ```js
 const dependencies =  require('@marknotton/dependencies')({ 
-scope : false, 
-log : false,
-moduleHandler : module => {
-  if ( module == 'someModule' ) {
-    return require(module).default({...})
-  }
-},
-nameTruncators : [ 'webpack-' ],
-aliases : { "vinyl-source-stream": "source" }
+  scope : false, 
+  log : false,
+  moduleHandler : module => {
+    if ( module == 'someModule' ) {
+      return require(module).default({...})
+    }
+  },
+  nameTruncators : [ 'webpack-' ],
+  aliases : { "vinyl-source-stream": "source" }
 });
 ```
