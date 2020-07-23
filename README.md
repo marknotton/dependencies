@@ -112,7 +112,7 @@ It's possible to break the scoped vendor nesting by setting aliases if necessary
 
 `moduleHandler`  `(Function)`*(defaults : @see "[Request Module](https://github.com/marknotton/dependencies/blob/master/index.js)" in this modules index.js)* - Handle special changes to certain dependencies; like instantiating a modules sub-method with a custom settings. 
 
-`nameTruncators`  `(Array)` - *( default : ['gulp-', 'postcss-', 'plugin-', 'rollup-'] )* =  Remove parts of the common vendor names to help sanitise the names how you'd like. You can completely edit the name using the "aliases" settings in your package.json or as another option *(see below)*. 
+`nameTruncators`  `(Array)` *( default : ['gulp-', 'postcss-', 'plugin-', 'rollup-'] )* - Remove parts of the common vendor names to help sanitise the names how you'd like. You can completely edit the name using the "aliases" settings in your package.json or as another option *(see below)*. 
 
 `aliases`  `(Object)` - This serves the same functionality as the aliases setting describe further up this page. Defining the aliases in in this option will prioritised over the package.json settings. 
 
