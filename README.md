@@ -20,9 +20,9 @@ const dependencies =  require('@marknotton/dependencies');
 ## But why?
  
 
-Code splitting tasks is ideal for maintaining your code in a coherent way, but in some cases it's useful to use the same instance of a node modules without re-requested them within each task file. This is actually compulsory for things like Gulp, as it uses callbacks after each task completes which can loose it's scope if you attempt to redefine it more than once in multiple tasks.
+Code splitting tasks is ideal for maintaining your code in a coherent way, but in some cases it's useful to use the same instance of a node module without re-requested them within each task file. This is actually compulsory for things like Gulp, as it uses callbacks after each task completes which can loose it's scope if you attempt to redefine it more than once in multiple tasks.
 
-This module will run through all the devDependencies from the package.json, Sanitise their names, scope their vendors, and initialise them as getters.
+This module will run through all the devDependencies from the package.json, sanitise their names, scope their vendors, and initialise them as getters.
 
 *Please note that this tool is tailored specifically to my needs and may not be suitable for everyone. If you think this package should be expanded with additional options let me know.*
 
@@ -104,26 +104,13 @@ It's possible to break the scoped vendor nesting by setting aliases if necessary
 }
 ```
 
-## Usage
-
-```js
-gulp.task('someTask', () => {
-return  gulp.src([...])
-.pipe(plumber({errorHandler: notifier.error }))
-.pipe(concat('ccombined.js'))
-.pipe(gulp.dest('/some/location/'))
-.pipe(notifier.success())
-});
-
-```
-
 ## Options
 
 `log` `(Bool)` *( default: true )* - An output of all the package aliases and how to destructure the export will be logged. *Only works in 'dev' environments.* 
 
 `scope` `(Bool)` *( default: true )* - Scoped vendors will be nested in the final export. If false, the export will be flattened but may cause naming conflicts.
 
-`moduleHandler`  `(Function)`*(defaults : @see "Request Module" in this modules index.js)* - Handle special changes to certain dependencies; like instantiating a modules sub-method with a custom settings. 
+`moduleHandler`  `(Function)`*(defaults : @see "[Request Module](https://github.com/marknotton/dependencies/blob/master/index.js)" in this modules index.js)* - Handle special changes to certain dependencies; like instantiating a modules sub-method with a custom settings. 
 
 `nameTruncators`  `(Array)` - *( default : ['gulp-', 'postcss-', 'plugin-', 'rollup-'] )* =  Remove parts of the common vendor names to help sanitise the names how you'd like. You can completely edit the name using the "aliases" settings in your package.json or as another option *(see below)*. 
 
@@ -134,9 +121,9 @@ const dependencies =  require('@marknotton/dependencies')({
 scope : false, 
 log : false,
 moduleHandler : module => {
-	if ( module == 'someModule' ) {
-		return require(module).default({...})
-	}
+  if ( module == 'someModule' ) {
+    return require(module).default({...})
+  }
 },
 nameTruncators : [ 'webpack-' ],
 aliases : { "vinyl-source-stream": "source" }
