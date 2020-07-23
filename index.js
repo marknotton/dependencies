@@ -17,7 +17,7 @@ require('dotenv').config()
 
 const log = require('@marknotton/lumberjack')
 
-const { name, aliases, devDependencies } = require('../../package.json')
+const { name, aliases, devDependencies } = require(process.env.PWD + '/package.json')
 
 let _modules = {}
 let _vendors = []
