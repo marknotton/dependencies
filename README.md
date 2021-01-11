@@ -2,7 +2,7 @@
 
 ![Made For NPM](https://img.shields.io/badge/Made%20for-NPM-orange.svg)
 
-Instantiate all NPM packages into a single object and sanitise their names.
+Instantiate all dev NPM packages into a single object and sanitise their names.
 
 
 ## Installation
