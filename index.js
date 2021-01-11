@@ -23,7 +23,7 @@ let _modules = {}
 let _vendors = []
 let _beforeAndAfterLogs = []
 let _nameTruncators = ['gulp-', 'postcss-', 'plugin-', 'rollup-']
-let _customAliases = {'path':'Path', 'stream':'Stream'
+let _customAliases = {'path':'Path', 'stream':'Stream'}
 let _moduleHandler = false
 
 // Add the project name as a process.env global constant and title case it.
