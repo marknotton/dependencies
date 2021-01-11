@@ -1,11 +1,9 @@
 # Dependencies for NPM
 
-  
-
 ![Made For NPM](https://img.shields.io/badge/Made%20for-NPM-orange.svg)
 
- Instantiate all NPM packages into a single object and sanitise their names.
-  
+Instantiate all NPM packages into a single object and sanitise their names.
+
 
 ## Installation
 
@@ -18,7 +16,6 @@ const dependencies =  require('@marknotton/dependencies')();
 ```
 
 ## But why?
- 
 
 Code splitting tasks is ideal for maintaining your code in a coherent way, but in some cases it's useful to use the same instance of a node module without re-requested them within each task file. This is actually compulsory for things like Gulp, as it uses callbacks after each task completes which can loose it's scope if you attempt to redefine it more than once in multiple tasks.
 
@@ -66,7 +63,6 @@ const dotenv = require("dotenv"),
       snowpack = require("snowpack")
 ```
 
-
 #### New method:  
 
 ```js
@@ -80,7 +76,6 @@ const {
   dotenv, browserSync, gulp, concat, if, plumber, rename, terser, snowpack
 } = dependencies
 ```
-
 
 **Remember this is not about syntactic sugar, this about retaining the scope of all the packages across all my tasks by only instantiating them once.**
 
@@ -114,7 +109,7 @@ It's possible to break the scoped vendor nesting by setting aliases if necessary
 
 `nameTruncators`  `(Array)` *( default : ['gulp-', 'postcss-', 'plugin-', 'rollup-'] )* - Remove parts of the common vendor names to help sanitise the names how you'd like. You can completely edit the name using the "aliases" settings in your package.json or as another option *(see below)*. 
 
-`aliases`  `(Object)` - This serves the same functionality as the aliases setting describe further up this page. Defining the aliases in in this option will prioritised over the package.json settings. 
+`aliases`  `(Object)` - This serves the same functionality as the aliases setting describe further up this page. Defining the aliases in this option will prioritised over the package.json settings. 
 
 ```js
 const dependencies =  require('@marknotton/dependencies')({ 
@@ -128,4 +123,12 @@ const dependencies =  require('@marknotton/dependencies')({
   nameTruncators : [ 'webpack-' ],
   aliases : { "vinyl-source-stream": "source" }
 });
+```
+
+## Default Packages
+
+Since Node's [Path](https://nodejs.org/api/path.html) and [Stream](https://nodejs.org/api/stream.html) API's are so commonly used, these are always included in the dependancy list; with their references titlecased to differentiate them from the users package dependencies. 
+
+```js
+const { Path, Stream } = require('@marknotton/dependencies')()
 ```

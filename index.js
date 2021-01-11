@@ -23,7 +23,7 @@ let _modules = {}
 let _vendors = []
 let _beforeAndAfterLogs = []
 let _nameTruncators = ['gulp-', 'postcss-', 'plugin-', 'rollup-']
-let _custonAliases = false
+let _customAliases = {'path':'Path', 'stream':'Stream'
 let _moduleHandler = false
 
 // Add the project name as a process.env global constant and title case it.
@@ -36,10 +36,14 @@ function init() {
   if ( devDependencies && Object.keys(devDependencies).length ) {
     
     //  Use custom aliases over any package.ons aliases
-    _custonAliases = _custonAliases ? _custonAliases : aliases
+    _customAliases = _customAliases ? _customAliases : aliases
 
     // Remove this module. It doesn't need to be used any further after it's innitial instantiation
     if (devDependencies.hasOwnProperty('@marknotton/dependencies')) { delete devDependencies['@marknotton/dependencies'] }
+    
+    // Adds a few native Node API's that are commonly used
+    if (!devDependencies.hasOwnProperty('path'))   { devDependencies['path']   = '' }
+    if (!devDependencies.hasOwnProperty('stream')) { devDependencies['stream'] = '' }
     
     // Run through all the depenencies from the package.json relative to this folder
     // and render each package into a modules object
@@ -48,8 +52,8 @@ function init() {
       // Clone the name so that we can modify
       let name = module
       
-      // Check if there were any preferences to aliases modules
-      name = _custonAliases && _custonAliases.hasOwnProperty(name) ? _custonAliases[name] : name
+      // Check if there were any preferences to alias modules
+      name = _customAliases && _customAliases.hasOwnProperty(name) ? _customAliases[name] : name
 
       // Check if this module has any special rules that justifty nesting it into 
       // a nested item in the modules oject. The vendor name helps retain scope.
@@ -208,7 +212,7 @@ module.exports = (options) => {
       _nameTruncators = options.nameTruncators
     }
     if ( options.hasOwnProperty('aliases') ) {
-      _custonAliases = options.aliases
+      _customAliases = options.aliases
     }
   }
   return init()
