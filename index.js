@@ -47,6 +47,7 @@ function init() {
     // Adds a few native Node API's that are commonly used
     if (!devDependencies.hasOwnProperty('path'))   { devDependencies['path']   = '' }
     if (!devDependencies.hasOwnProperty('stream')) { devDependencies['stream'] = '' }
+    if (!devDependencies.hasOwnProperty('fs'))     { devDependencies['fs'] = '' }
     
     // Run through all the depenencies from the package.json relative to this folder
     // and render each package into a modules object
