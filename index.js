@@ -131,7 +131,7 @@ function requestModule(module) {
 
   switch (module) {
     case 'browser-sync':
-      return require(module).create()
+      return require(module).create('browser-sync')
     break;
     case 'gulp-run-command':
       return require(module).default
