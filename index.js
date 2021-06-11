@@ -8,7 +8,7 @@
 // the export will be shown
 let showLog = true
 
-// If this is true, scroped vendors will be nested in the final export. 
+// If this is true, scoped vendors will be nested in the final export. 
 // If false, the export will be flattened but may cause naming conflicts.
 let scopeVendors = true
 
@@ -40,6 +40,7 @@ function init() {
 
     if (!_customAliases.hasOwnProperty('path')) { _customAliases['path'] = 'Path' }
     if (!_customAliases.hasOwnProperty('stream')) { _customAliases['stream'] = 'Stream' }
+    if (!_customAliases.hasOwnProperty('@marknotton/lumberjack')) { _customAliases['@marknotton/lumberjack'] = 'log' }
 
     // Remove this module. It doesn't need to be used any further after it's innitial instantiation
     if (devDependencies.hasOwnProperty('@marknotton/dependencies')) { delete devDependencies['@marknotton/dependencies'] }
@@ -48,6 +49,7 @@ function init() {
     if (!devDependencies.hasOwnProperty('path'))   { devDependencies['path']   = '' }
     if (!devDependencies.hasOwnProperty('stream')) { devDependencies['stream'] = '' }
     if (!devDependencies.hasOwnProperty('fs'))     { devDependencies['fs'] = '' }
+    if (!devDependencies.hasOwnProperty('@marknotton/lumberjack')) { devDependencies['@marknotton/lumberjack'] = '' }
     
     // Run through all the depenencies from the package.json relative to this folder
     // and render each package into a modules object
@@ -131,7 +133,7 @@ function requestModule(module) {
 
   switch (module) {
     case 'browser-sync':
-      return require(module).create('browser-sync')
+      return require(module).create()
     break;
     case 'gulp-run-command':
       return require(module).default
