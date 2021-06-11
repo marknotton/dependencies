@@ -127,7 +127,7 @@ const dependencies =  require('@marknotton/dependencies')({
 
 ## Default Packages
 
-Since Node's [Path](https://nodejs.org/api/path.html), [Stream](https://nodejs.org/api/stream.html), and [File System (fs)](https://nodejs.org/api/fs.html) API's are so commonly used, these are always included in the dependancy list; with 'Path' and 'Stream' references titlecased to differentiate them from the users package dependencies. 
+Since Node's [Path](https://nodejs.org/api/path.html), [Stream](https://nodejs.org/api/stream.html), and [File System (fs)](https://nodejs.org/api/fs.html) API's are so commonly used, these are always included in the dependancy list; with 'Path' and 'Stream' references titlecased to differentiate them from the users package dependencies. Also [Lumberjack](https://github.com/marknotton/lumberjack) has been added to the default packages list with the alias 'log'. 
 
 ```js
 const { Path, Stream, fs } = require('@marknotton/dependencies')()
