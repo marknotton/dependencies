@@ -17,11 +17,11 @@ const dependencies =  require('@marknotton/dependencies')();
 
 ## But why?
 
-Code splitting tasks is ideal for maintaining your code in a coherent way, but in some cases it's useful to use the same instance of a node module without re-requested them within each task file. This is actually compulsory for things like Gulp, as it uses callbacks after each task completes which can loose it's scope if you attempt to redefine it more than once in multiple tasks.
+Code splitting tasks is ideal for maintaining your code in a coherent way, but in some cases it's useful to use the same instance of a node module without re-requested them within each task file. This is actually compulsory for things like Gulp, as it uses callbacks after each task completes, which can lose its scope if you attempt to redefine it more than once in multiple tasks.
 
 This module will run through all the devDependencies from the package.json, sanitise their names, scope their vendors, and initialise them as getters.
 
-*Please note that this tool is tailored specifically to my needs and may not be suitable for everyone. If you think this package should be expanded with additional options let me know.*
+*Please note that this tool is tailored specifically to my needs and may not be suitable for everyone. If you think this package should be expanded with additional options, let me know.*
 
 ### How names are sanitised:  
 
