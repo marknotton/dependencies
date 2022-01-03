@@ -36,11 +36,11 @@ function init() {
   if ( devDependencies && Object.keys(devDependencies).length ) {
     
     //  Use custom aliases over any package.ons aliases
-    _customAliases = _customAliases ? _customAliases : aliases
+    _customAliases = _customAliases ? _customAliases : (aliases || [])
 
-    if (!_customAliases.hasOwnProperty('path')) { _customAliases['path'] = 'Path' }
-    if (!_customAliases.hasOwnProperty('stream')) { _customAliases['stream'] = 'Stream' }
-    if (!_customAliases.hasOwnProperty('@marknotton/lumberjack')) { _customAliases['@marknotton/lumberjack'] = 'log' }
+    if (!_customAliases || _customAliases && !_customAliases.hasOwnProperty('path')) { _customAliases['path'] = 'Path' }
+    if (!_customAliases || _customAliases && !_customAliases.hasOwnProperty('stream')) { _customAliases['stream'] = 'Stream' }
+    if (!_customAliases || _customAliases && !_customAliases.hasOwnProperty('@marknotton/lumberjack')) { _customAliases['@marknotton/lumberjack'] = 'log' }
 
     // Remove this module. It doesn't need to be used any further after it's innitial instantiation
     if (devDependencies.hasOwnProperty('@marknotton/dependencies')) { delete devDependencies['@marknotton/dependencies'] }
