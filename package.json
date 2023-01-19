@@ -1,6 +1,6 @@
 {
   "name": "@marknotton/dependencies",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Instantiate all dev NPM packages into a single object and sanitise their names",
   "main": "index.js",
   "repository": {

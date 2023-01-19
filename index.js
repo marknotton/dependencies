@@ -150,6 +150,9 @@ function requestModule(module) {
     case 'dotenv':
       return require(module).config()
     break;
+    case 'minimatch':
+      return require(module).Minimatch || require(module)
+    break;
     case 'postcss-assets':
       const { paths } = require('../config.json')
       return require(module)({loadPaths:[paths.images]})
